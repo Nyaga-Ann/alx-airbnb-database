@@ -17,12 +17,14 @@ SELECT
     properties.id AS property_id,
     properties.name AS property_name,
     reviews.id AS review_id,
-    reviews.rating,
-    reviews.comment
+    reviews.comment AS review_comment,
+    reviews.rating
 FROM 
     properties
 LEFT JOIN 
-    reviews ON properties.id = reviews.property_id;
+    reviews ON properties.id = reviews.property_id
+ORDER BY 
+    properties.id;
 
 
 -- 3. FULL OUTER JOIN: Retrieve all users and all bookings, even if unmatched (MySQL-compatible)
