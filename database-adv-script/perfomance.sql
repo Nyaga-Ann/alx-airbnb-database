@@ -1,4 +1,4 @@
--- Initial complex query
+-- Initial complex query with WHERE and AND
 EXPLAIN ANALYZE
 SELECT 
     b.id AS booking_id,
@@ -15,7 +15,11 @@ JOIN
 JOIN 
     Property p ON b.property_id = p.id
 LEFT JOIN 
-    Payment pay ON pay.booking_id = b.id;
+    Payment pay ON pay.booking_id = b.id
+WHERE 
+    p.location = 'Nairobi'
+    AND pay.status = 'completed';
+
 
 -- Refactored query with assumed indexing
 EXPLAIN ANALYZE
